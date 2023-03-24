@@ -1,16 +1,133 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>排班表</title>
-	<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>排班表</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      border: 1px solid black;
+      text-align: center;
+      padding: 8px;
+    }
+
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+  </style>
 </head>
 <body>
-	<div id="schedule">
-		<h1 id="title"></h1>
-		<div id="table"></div>
-	</div>
+  <h1>排班表</h1>
+  <div>
+    <button onclick="previousWeek()">上一周</button>
+    <button onclick="nextWeek()">下一周</button>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>日期</th>
+        <th>星期</th>
+        <th>第一節</th>
+        <th>第二節</th>
+        <th>第三節</th>
+        <th>第四節</th>
+        <th>第五節</th>
+        <th>第六節</th>
+        <th>第七節</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>4/10</td>
+        <td>星期一</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>4/11</td>
+        <td>星期二</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>4/12</td>
+        <td>星期三</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>4/13</td>
+        <td>星期四</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>4/14</td>
+        <td>星期五</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+<script>
+function formatDate(date) {
+  var month = date.getMonth() + 1;
+  var day = date.getDate();
+  return month + '/' + day;
+}
 
-	<script src="script.js"></script>
-</body>
-</html>
+function updateTable() {
+  var table = document.querySelector('table');
+  var rows = table.rows;
+
+  // Update the date and week day headers
+  rows[0].cells[0].textContent = formatDate(date);
+  rows[0].cells[1].textContent = weekDays[date.getDay()];
+
+  // Update the table cells
+  for (var i = 1; i < rows.length; i++) {
+    for (var j = 2; j < rows[i].cells.length; j++) {
+      rows[i].cells[j].textContent = '';
+    }
+  }
+}
+
+var date = new Date('2022-04-10');
+var weekDays = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+
+updateTable();
+</script>
