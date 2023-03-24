@@ -3,52 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <title>排班表</title>
-  <style>
-    table {
-      border-collapse: collapse;
-      width: 100%;
-    }
-
-    th, td {
-      border: 1px solid black;
-      text-align: center;
-      padding: 8px;
-    }
-
-    th {
-      background-color: #4CAF50;
-      color: white;
-    }
-
-    tr:nth-child(even) {
-      background-color: #f2f2f2;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>排班表</h1>
-  <div>
-    <button onclick="previousWeek()">上一周</button>
-    <button onclick="nextWeek()">下一周</button>
+  <div id="header">
+    <button id="prevWeekBtn" onclick="prevWeek()">上一周</button>
+    <h1 id="weekTitle"></h1>
+    <button id="nextWeekBtn" onclick="nextWeek()">下一周</button>
   </div>
-  <table>
+  <table id="scheduleTable">
     <thead>
       <tr>
-        <th>日期</th>
-        <th>星期</th>
-        <th>第一節</th>
-        <th>第二節</th>
-        <th>第三節</th>
-        <th>第四節</th>
-        <th>第五節</th>
-        <th>第六節</th>
-        <th>第七節</th>
+        <th></th>
+        <th>1</th>
+        <th>2</th>
+        <th>3</th>
+        <th>4</th>
+        <th>5</th>
+        <th>6</th>
+        <th>7</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>4/10</td>
-        <td>星期一</td>
+        <th>第一節</th>
         <td></td>
         <td></td>
         <td></td>
@@ -58,8 +36,7 @@
         <td></td>
       </tr>
       <tr>
-        <td>4/11</td>
-        <td>星期二</td>
+        <th>第二節</th>
         <td></td>
         <td></td>
         <td></td>
@@ -69,8 +46,7 @@
         <td></td>
       </tr>
       <tr>
-        <td>4/12</td>
-        <td>星期三</td>
+        <th>第三節</th>
         <td></td>
         <td></td>
         <td></td>
@@ -80,8 +56,7 @@
         <td></td>
       </tr>
       <tr>
-        <td>4/13</td>
-        <td>星期四</td>
+        <th>第四節</th>
         <td></td>
         <td></td>
         <td></td>
@@ -91,8 +66,27 @@
         <td></td>
       </tr>
       <tr>
-        <td>4/14</td>
-        <td>星期五</td>
+        <th>第五節</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th>第六節</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th>第七節</th>
         <td></td>
         <td></td>
         <td></td>
@@ -103,31 +97,6 @@
       </tr>
     </tbody>
   </table>
-<script>
-function formatDate(date) {
-  var month = date.getMonth() + 1;
-  var day = date.getDate();
-  return month + '/' + day;
-}
-
-function updateTable() {
-  var table = document.querySelector('table');
-  var rows = table.rows;
-
-  // Update the date and week day headers
-  rows[0].cells[0].textContent = formatDate(date);
-  rows[0].cells[1].textContent = weekDays[date.getDay()];
-
-  // Update the table cells
-  for (var i = 1; i < rows.length; i++) {
-    for (var j = 2; j < rows[i].cells.length; j++) {
-      rows[i].cells[j].textContent = '';
-    }
-  }
-}
-
-var date = new Date('2022-04-10');
-var weekDays = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
-
-updateTable();
-</script>
+  <script src="script.js"></script>
+</body>
+</html>
